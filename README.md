@@ -84,5 +84,3 @@ Password Manager is a secure and user-friendly application designed for managing
 *   [ ] Implement auto-fill functionality for web browsers.
 *   [ ] Consider adding multi-factor authentication options.
 
-## License
-No
