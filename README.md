@@ -2,34 +2,40 @@
 
 ## Overview
 
-Password Manager is a simple yet secure application for storing and managing your passwords. The application allows you to generate strong passwords, save them in an encrypted format, and access them when needed.
+Password Manager is a secure and user-friendly application designed for managing your passwords. It allows you to generate strong, random passwords, securely store them in encrypted files, and easily access them whenever you need them. With profile support, you can manage passwords for different contexts separately.
 
 ## Features
 
 *   **Password Generation:**
-    *   Generates random passwords of a specified length.
-    *   Customizable password length.
-*   **Password Saving:**
-    *   Saves passwords with the associated website/account name.
-    *   Password encryption for security.
+    *   Generate strong, random passwords with customizable length.
+    *   Option to include or exclude symbols in generated passwords.
+*   **Password Storage:**
+    *   Securely store passwords associated with website/account names.
+    *   Encrypt passwords using robust encryption algorithms (Fernet).
+    *   Store passwords in separate files for each profile.
+*   **Password Management with Profiles:**
+    *   Create, rename, and delete profiles to manage different sets of passwords.
+    *   Switch between profiles easily.
 *   **Password Viewing:**
-    *   Secure access to saved passwords.
-    *   Displays the website/account name and the corresponding password.
-    *   Copy password to clipboard (future enhancement).
+    *   View stored passwords securely after entering the master password.
+*   **Settings:**
+    *   Configure the default password length.
+    *   Enable or disable the inclusion of symbols in generated passwords.
 *   **Security:**
-    *   Password encryption using a strong algorithm (Fernet).
-    *   Master password protection for the encryption key.
-    *   Uses PBKDF2 to derive the encryption key from the master password.
+    *   Encrypt passwords using Fernet encryption.
+    *   Protect encryption keys using a master password.
+    *   Use PBKDF2 for key derivation from the master password.
 *   **GUI (Graphical User Interface):**
-    *   Simple and intuitive interface developed using Tkinter.
-    *   Modern design based on Material Design (Android) principles.
+    *   Intuitive and easy-to-use interface built with Tkinter.
+    *   Modern design principles inspired by Material Design (Android).
 
 ## How It Works
 
-1.  **Launch:** Upon launching the application, the user is prompted to enter a master password. This password is used to derive the encryption key.
-2.  **Password Generation:** The user can generate a random password of a specified length.
-3.  **Password Saving:** After generating or entering a password, the user can save it by specifying the website/account name. The password is encrypted using the key derived from the master password and saved to the `passwords.json` file.
-4.  **Password Viewing:** The user can view saved passwords by selecting the website/account name. Upon selection, the encrypted password is decrypted using the key derived from the master password and displayed to the user.
+1.  **Profile Selection/Creation:** On startup, the application prompts you to select an existing profile or create a new one.
+2.  **Master Password Entry:** Enter your master password. This password unlocks the encryption key for the selected profile.
+3.  **Password Generation:** Generate random passwords with customizable length and symbol inclusion.
+4.  **Password Storage:** Save passwords securely by associating them with website/account names. The passwords are encrypted using the key derived from the master password and stored in a profile-specific file.
+5.  **Password Viewing:** View your saved passwords securely within the application.
 
 ## Requirements
 
@@ -38,7 +44,7 @@ Password Manager is a simple yet secure application for storing and managing you
 
 ## Installation
 
-1.  Install the necessary libraries:
+1.  Install the required libraries:
     ```bash
     pip install cryptography
     ```
@@ -49,31 +55,34 @@ Password Manager is a simple yet secure application for storing and managing you
 
 ## Usage
 
-1.  **Launch:** Run the application.
-2.  **Enter Master Password:** Enter your master password and click "Login."
-3.  **Generate Password:** Click the "Generate Password" button, enter the desired password length, and click "Generate." Copy the generated password.
-4.  **Save Password:** Click the "Save Password" button, enter the website/account name and password, then click "Save."
-5.  **View Passwords:** Click the "View Passwords" button to view your saved passwords. Select a website/account name from the list to see the corresponding password.
+1.  **Start the Application:** Launch the Password Manager application.
+2.  **Select or Create a Profile:** Choose an existing profile from the dropdown menu or create a new one using the "Manage Profiles" button.
+3.  **Enter Master Password:** Enter your master password and click "Login."
+4.  **Generate Passwords:** Use the "Generate" tab to generate random passwords. Customize the length and symbol inclusion as desired.
+5.  **Save Passwords:** Go to the "Save" tab to save passwords. Enter the website/account name and the password you want to store.
+6.  **View Passwords:** Access the "View" tab to see your saved passwords.
+7.  **Configure Settings:** Use the "Settings" tab to adjust the default password length and symbol inclusion.
+8.  **Manage Profiles:** Click the "Manage Profiles" button to create, rename, or delete profiles.
 
 ## Security
 
-*   **Master Password:** Keep your master password secure. Losing your master password will result in the loss of access to all your passwords.
-*   **Salt:** In the current implementation, the salt for PBKDF2 is hardcoded. In a real-world application, the salt should be randomly generated and stored separately from the master password. (Will be updated soon)
-*   **Regularly update libraries.** Make sure you have the latest versions of `cryptography` to have security patches.
-*   **Backup:** Consider backing up the `passwords.json` file.
-*   **Do not share `passwords.json` or your master password.**
+*   **Master Password:**
+    *   Choose a strong and unique master password.
+    *   Remember your master password. Loss of the master password means loss of access to your stored passwords.
+*   **Profiles:** Use profiles to separate and manage passwords for different areas of your life.
+*   **Salt:** The salt used in this application for PBKDF2 is currently hardcoded for demonstration purposes. In a production environment, it's crucial to use randomly generated salts stored securely for each profile.
+*   **Library Updates:** Keep the `cryptography` library updated to benefit from the latest security patches and improvements.
+*   **Backup:** Regularly back up your profile files (`*_passwords.json` and `profiles.json`) to prevent data loss.
+*   **Never Share:** Do not share your `passwords.json`, `profiles.json`, or master password with anyone.
 
 ## Future Enhancements (Roadmap)
 
-*   [ ] Add a copy-to-clipboard function.
-*   [ ] Implement secure salt generation and storage.
-*   [ ] Add functionality to edit existing passwords.
-*   [ ] Implement a search function for saved passwords.
-*   [ ] Improve the user interface (more responsive design, icons).
-*   [ ] Add an import/export option for passwords.
-*   [ ] Support for multiple user profiles.
-*   [ ] Add warnings for weak passwords.
-*   [ ] Integrate with a browser for autofill (requires browser extensions).
+*   [ ] Implement secure, randomly generated, profile-specific salts for PBKDF2.
+*   [ ] Add password strength indicators.
+*   [ ] Enhance the user interface with icons and more customization options.
+*   [ ] Implement password export and import functionality.
+*   [ ] Implement auto-fill functionality for web browsers.
+*   [ ] Consider adding multi-factor authentication options.
 
 ## License
 No
